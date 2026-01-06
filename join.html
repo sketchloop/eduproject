@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Join the Program | PathLift</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/main.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-logo"></span>
+        <span class="brand-name">PathLift</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container card">
+      <h1>Join the Program</h1>
+      <p class="muted">Start learning immediately. No fees, no prerequisites.</p>
+
+      <form id="joinForm">
+        <label for="name">Your name*</label>
+        <input id="name" type="text" required />
+
+        <label for="email">Email*</label>
+        <input id="email" type="email" required />
+
+        <button class="btn" type="submit">Start Learning</button>
+      </form>
+
+      <p id="error" class="muted" style="color: var(--danger);"></p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("joinForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!name || !email) {
+        document.getElementById("error").textContent = "Please fill in all fields.";
+        return;
+      }
+
+      // Save user info locally
+      localStorage.setItem("pathliftUser", JSON.stringify({ name, email }));
+
+      // Redirect to dashboard
+      window.location.href = "learn.html";
+    });
+  </script>
+</body>
+</html>
