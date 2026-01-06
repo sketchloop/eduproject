@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Learning Dashboard | PathLift</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-logo"></span>
+        <span class="brand-name">PathLift</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container">
+      <div class="card">
+        <h1>Welcome, <span id="username"></span>!</h1>
+        <p class="muted">Your learning journey starts here.</p>
+      </div>
+
+      <div class="grid grid-2 space-md">
+        <div class="card">
+          <h3>Lesson 1: Foundations</h3>
+          <p>Reading, writing, numeracy, confidence building.</p>
+          <button class="btn" onclick="startLesson('foundations')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Lesson 2: Digital Skills</h3>
+          <p>Email, documents, spreadsheets, online safety.</p>
+          <button class="btn" onclick="startLesson('digital')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Lesson 3: Workplace Readiness</h3>
+          <p>Communication, teamwork, professionalism.</p>
+          <button class="btn" onclick="startLesson('workplace')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Lesson 4: Career Development</h3>
+          <p>Resume, interviews, portfolio building.</p>
+          <button class="btn" onclick="startLesson('career')">Start</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Load user name
+    const user = JSON.parse(localStorage.getItem("pathliftUser"));
+    if (!user) window.location.href = "join.html";
+    document.getElementById("username").textContent = user.name;
+
+    function startLesson(lesson) {
+      localStorage.setItem("currentLesson", lesson);
+      window.location.href = "lesson.html";
+    }
+  </script>
+</body>
+</html>
