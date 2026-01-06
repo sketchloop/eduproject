@@ -15,6 +15,13 @@
         <span class="brand-logo"></span>
         <span class="brand-name">PathLift</span>
       </a>
+      <nav>
+        <div class="nav-links">
+          <a href="learn.html" aria-current="page">Dashboard</a>
+          <a href="curriculum.html">Curriculum</a>
+          <a href="contact.html">Support</a>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -22,47 +29,21 @@
     <div class="container">
       <div class="card">
         <h1>Welcome, <span id="username"></span>!</h1>
-        <p class="muted">Your learning journey starts here.</p>
+        <p class="muted">Your learning journey starts here. You can move at your own pace.</p>
       </div>
 
       <div class="grid grid-2 space-md">
         <div class="card">
-          <h3>Lesson 1: Foundations</h3>
-          <p>Reading, writing, numeracy, confidence building.</p>
+          <h3>Lesson 1: Foundations & Confidence</h3>
+          <p>Reading, writing, numeracy, routines, and building yourself back up.</p>
           <button class="btn" onclick="startLesson('foundations')">Start</button>
         </div>
 
         <div class="card">
           <h3>Lesson 2: Digital Skills</h3>
-          <p>Email, documents, spreadsheets, online safety.</p>
+          <p>Email, documents, spreadsheets, and staying safe online.</p>
           <button class="btn" onclick="startLesson('digital')">Start</button>
         </div>
 
         <div class="card">
-          <h3>Lesson 3: Workplace Readiness</h3>
-          <p>Communication, teamwork, professionalism.</p>
-          <button class="btn" onclick="startLesson('workplace')">Start</button>
-        </div>
-
-        <div class="card">
-          <h3>Lesson 4: Career Development</h3>
-          <p>Resume, interviews, portfolio building.</p>
-          <button class="btn" onclick="startLesson('career')">Start</button>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    // Load user name
-    const user = JSON.parse(localStorage.getItem("pathliftUser"));
-    if (!user) window.location.href = "join.html";
-    document.getElementById("username").textContent = user.name;
-
-    function startLesson(lesson) {
-      localStorage.setItem("currentLesson", lesson);
-      window.location.href = "lesson.html";
-    }
-  </script>
-</body>
-</html>
+          <h3>Lesson 3: Workplace Read
