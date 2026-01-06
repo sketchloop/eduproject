@@ -29,21 +29,66 @@
     <div class="container">
       <div class="card">
         <h1>Welcome, <span id="username"></span>!</h1>
-        <p class="muted">Your learning journey starts here. You can move at your own pace.</p>
+        <p class="muted">Your learning journey starts here. Move at your own pace — every step forward counts.</p>
       </div>
 
       <div class="grid grid-2 space-md">
+
         <div class="card">
           <h3>Lesson 1: Foundations & Confidence</h3>
-          <p>Reading, writing, numeracy, routines, and building yourself back up.</p>
+          <p>Reading, writing, numeracy, routines, and rebuilding confidence.</p>
           <button class="btn" onclick="startLesson('foundations')">Start</button>
         </div>
 
         <div class="card">
           <h3>Lesson 2: Digital Skills</h3>
-          <p>Email, documents, spreadsheets, and staying safe online.</p>
+          <p>Email, documents, spreadsheets, and online safety.</p>
           <button class="btn" onclick="startLesson('digital')">Start</button>
         </div>
 
         <div class="card">
-          <h3>Lesson 3: Workplace Read
+          <h3>Lesson 3: Workplace Readiness</h3>
+          <p>Communication, teamwork, boundaries, and handling stress.</p>
+          <button class="btn" onclick="startLesson('workplace')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Lesson 4: Career Development</h3>
+          <p>Resumes, interviews, portfolios, and applying to companies like Apple.</p>
+          <button class="btn" onclick="startLesson('career')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Track: Tech & Support</h3>
+          <p>Intro to tech support, basic coding, and customer care.</p>
+          <button class="btn" onclick="startLesson('techTrack')">Start</button>
+        </div>
+
+        <div class="card">
+          <h3>Track: Operations & Service</h3>
+          <p>Operations, logistics, and customer service roles.</p>
+          <button class="btn" onclick="startLesson('opsTrack')">Start</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Load user info
+    const user = JSON.parse(localStorage.getItem("pathliftUser"));
+    if (!user) {
+      window.location.href = "join.html";
+    } else {
+      document.getElementById("username").textContent = user.name;
+    }
+
+    // Start a lesson
+    function startLesson(lessonId) {
+      localStorage.setItem("currentLesson", lessonId);
+      window.location.href = "lesson.html";
+    }
+  </script>
+
+</body>
+</html>
