@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Join the Program | PathLift</title>
   <link rel="stylesheet" href="assets/styles.css" />
-  <script defer src="assets/main.js"></script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -50,10 +49,7 @@
         return;
       }
 
-      // Save user info locally
       localStorage.setItem("pathliftUser", JSON.stringify({ name, email }));
-
-      // Redirect to dashboard
       window.location.href = "learn.html";
     });
   </script>
