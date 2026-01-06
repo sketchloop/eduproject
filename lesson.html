@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lesson | PathLift</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-logo"></span>
+        <span class="brand-name">PathLift</span>
+      </a>
+      <nav>
+        <div class="nav-links">
+          <a href="learn.html">Dashboard</a>
+          <a href="curriculum.html">Curriculum</a>
+          <a href="contact.html">Support</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container card">
+      <h1 id="lessonTitle">Lesson</h1>
+      <p class="muted" id="lessonIntro"></p>
+
+      <div id="lessonSections"></div>
+
+      <div class="space-md">
+        <button class="btn secondary" onclick="window.location.href='learn.html'">Back to dashboard</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* ALL LESSONS ARE STORED HERE */
+    const lessons = {
+      foundations: {
+        title: "Lesson 1: Foundations & Confidence",
+        intro: "This lesson focuses on rebuilding core skills and confidence. You are not starting from zero — you’re starting from experience.",
+        sections: [
+          {
+            heading: "Reading & Writing Refresh",
+            content: [
+              "Read a short article and summarize it in your own words.",
+              "Write a paragraph about a challenge you overcame.",
+              "Focus on clarity, not perfection."
+            ]
+          },
+          {
+            heading: "Numeracy & Everyday Math",
+            content: [
+              "Practice budgeting with simple addition and subtraction.",
+              "Solve word problems involving time, money, or planning.",
+              "Use math to track hours worked or weekly expenses."
+            ]
+          },
+          {
+            heading: "Routines & Confidence",
+            content: [
+              "Create a simple daily routine with learning time included.",
+              "Identify small wins you can achieve each day.",
+              "If you're in recovery, think about support systems that help you stay steady."
+            ]
+          }
+        ]
+      },
+
+      digital: {
+        title: "Lesson 2: Digital Skills",
+        intro: "Digital skills open doors to many jobs, including roles at major companies.",
+        sections: [
+          {
+            heading: "Email & Communication",
+            content: [
+              "Create or review a professional email address.",
+              "Practice writing a clear, short email.",
+              "Learn how to spot suspicious emails and avoid scams."
+            ]
+          },
+          {
+            heading: "Documents & Spreadsheets",
+            content: [
+              "Create a simple document summarizing your goals.",
+              "Use a spreadsheet to track a weekly budget or job applications.",
+              "Practice basic formulas like =SUM and sorting data."
+            ]
+          },
+          {
+            heading: "Online Safety",
+            content: [
+              "Use strong, unique passwords.",
+              "Avoid sharing personal information with unknown sources.",
+              "Learn how to stay safe on public Wi-Fi."
+            ]
+          }
+        ]
+      },
+
+      workplace: {
+        title: "Lesson 3: Workplace Readiness",
+        intro: "Prepare for real workplaces — communication, boundaries, and stress management.",
+        sections: [
+          {
+            heading: "Communication",
+            content: [
+              "Practice active listening by repeating back what you heard.",
+              "Ask clarifying questions instead of pretending to understand.",
+              "Learn how to communicate professionally in person and online."
+            ]
+          },
+          {
+            heading: "Professional Boundaries",
+            content: [
+              "Understand the difference between friendly and overly personal.",
+              "Use simple boundary-setting phrases like “I need to focus on this task.”",
+              "Know that you deserve respect at work."
+            ]
+          },
+          {
+            heading: "Handling Stress",
+            content: [
+              "Identify your stress triggers.",
+              "Practice healthy coping strategies during breaks.",
+              "If you're in recovery, plan ahead for stressful days."
+            ]
+          }
+        ]
+      },
+
+      career: {
+        title: "Lesson 4: Career Development",
+        intro: "Turn your skills and story into applications and interviews.",
+        sections: [
+          {
+            heading: "Resume Basics",
+            content: [
+              "List your past jobs, volunteer work, and responsibilities.",
+              "Highlight transferable skills like communication and reliability.",
+              "Keep your resume clean, simple, and one page."
+            ]
+          },
+          {
+            heading: "Interview Practice",
+            content: [
+              "Practice answering “Tell me about yourself” in 1–2 minutes.",
+              "Think of 2–3 stories where you solved a problem.",
+              "Record yourself to see what you want to improve."
+            ]
+          },
+          {
+            heading: "Applying to Companies Like Apple",
+            content: [
+              "Look at entry-level roles: retail, support, operations.",
+              "Focus on reliability, communication, and digital comfort.",
+              "Remember: many people at big companies started in entry-level roles."
+            ]
+          }
+        ]
+      },
+
+      techTrack: {
+        title: "Track: Tech & Support",
+        intro: "Learn the basics of tech support and coding.",
+        sections: [
+          {
+            heading: "Tech Support Basics",
+            content: [
+              "Learn what help desk roles do day-to-day.",
+              "Practice explaining simple tech concepts in plain language.",
+              "Get comfortable saying “I don’t know yet, but I can find out.”"
+            ]
+          },
+          {
+            heading: "Coding Basics",
+            content: [
+              "Learn what HTML is and how it structures web pages.",
+              "Try editing a simple webpage (like this site!).",
+              "Understand that coding is about problem-solving, not perfection."
+            ]
+          }
+        ]
+      },
+
+      opsTrack: {
+        title: "Track: Operations & Service",
+        intro: "Learn the skills needed for operations and customer service roles.",
+        sections: [
+          {
+            heading: "Operations",
+            content: [
+              "Learn what operations roles do: scheduling, inventory, coordination.",
+              "Practice organizing a simple schedule or checklist.",
+              "Think about times you’ve kept things running — that’s operations too."
+            ]
+          },
+          {
+            heading: "Customer Service",
+            content: [
+              "Practice handling a frustrated customer with calm and empathy.",
+              "Use phrases like “I hear you” and “Let’s see what we can do.”",
+              "Customer service skills are valuable at many companies."
+            ]
+          }
+        ]
+      }
+    };
+
+    /* LOAD THE CORRECT LESSON */
+    const lessonId = localStorage.getItem("currentLesson");
+    if (!lessonId || !lessons[lessonId]) {
+      window.location.href = "learn.html";
+    }
+
+    const lesson = lessons[lessonId];
+    document.getElementById("lessonTitle").textContent = lesson.title;
+    document.getElementById("lessonIntro").textContent = lesson.intro;
+
+    const container = document.getElementById("lessonSections");
+
+    lesson.sections.forEach(section => {
+      const card = document.createElement("div");
+      card.className = "space-md";
+
+      const h3 = document.createElement("h3");
+      h3.textContent = section.heading;
+      card.appendChild(h3);
+
+      const ul = document.createElement("ul");
+      ul.className = "checklist";
+
+      section.content.forEach(text => {
+        const li = document.createElement("li");
+        const icon = document.createElement("span");
+        icon.className = "icon";
+        icon.textContent = "•";
+        const span = document.createElement("span");
+        span.textContent = text;
+        li.appendChild(icon);
+        li.appendChild(span);
+        ul.appendChild(li);
+      });
+
+      card.appendChild(ul);
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
